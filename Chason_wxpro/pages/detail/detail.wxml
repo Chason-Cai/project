@@ -1,0 +1,5 @@
+<view class="wrap">
+  <image mode="aspectFit" src="{{detail.IMAGE1}}"></image>
+  <text>{{ detail.NAME }}</text>                   
+  <rich-text nodes="{{content}}"></rich-text>
+</view>

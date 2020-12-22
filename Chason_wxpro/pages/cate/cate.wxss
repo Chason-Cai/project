@@ -1,0 +1,54 @@
+page{
+  height: 100%;
+}
+.wrap{
+  height: 100%;
+  display: flex;
+}
+.cates{
+  height: 100%;
+  flex: 180rpx;
+  background-color: #0ff;
+  border-right: 1px solid #333;
+}
+.cate{
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+.cate.active{
+  background: #f66;
+  color: #f00;
+}
+.items{
+  height: 100%;
+  flex: 570rpx;
+}
+.cate-wrap{
+  display: flex;
+}
+.subcate{
+  flex-shrink: 0;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 5px;
+  background: #abcdef;
+}
+.subcate.active{
+  background: rgb(240, 133, 240);
+  color: #f00;
+}
+.recommend-main{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item{
+  width: 280rpx;
+  text-align: center;
+}
+.item image{
+  width: 280rpx;
+  height: 280rpx;
+}

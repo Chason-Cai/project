@@ -1,0 +1,49 @@
+<view class="wrap">
+  <!-- 轮播 -->
+  <swiper
+  indicator-dots="{{true}}"
+  autoplay="{{true}}"
+  interval= "3000"
+  circular="{{true}}"
+  class="banner">
+    <swiper-item>
+      <image src="//image2.suning.cn/uimg/cms/img/160829980161566772.jpg?format=_is_1242w_610h"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="https://oss.suning.com/adpp/creative_kit/material/picture/20200706-0b704b452c38418897f43d944583da53693a083846d5484c.jpg"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 宫格导航 -->
+  <view class="cates">
+    <view
+    bindtap="enterItemLists"
+    data-id='{{cate.ID}}'
+    class="cate"
+    wx:for="{{cates}}"
+    wx:for-item="cate"
+    wx:key="ID">
+      <image mode="aspectFit" src="{{cate.IMAGE}}"></image>
+      <text>{{cate.MALL_CATEGORY_NAME}}</text>
+    </view>
+  </view>
+  <!-- 推荐商品 -->
+  <view class="recommend">
+    <view class="recommend-top">
+      <text>商品推荐</text>
+    </view>
+    <view class="recommend-main">
+      <view
+      bindtap="enterDetail"
+      data-id="{{item.ID}}"
+      wx:for="{{items}}"
+      wx:key="ID"
+      class="item">
+        <image mode="aspectFit" src="{{item.IMAGE1}}"></image>
+        <text>{{item.NAME}}</text>
+      </view>
+
+      <!-- 到底 -->
+      <view wx:if="{{isBottom}}" class="bottom">我也是有底线的~~~</view>
+    </view>
+  </view>
+</view>

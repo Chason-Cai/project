@@ -1,0 +1,5 @@
+text{
+  font: 600 20px "楷体";
+  margin: 20px 20rpx;
+  display: block;
+}

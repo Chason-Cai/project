@@ -1,0 +1,6 @@
+<view>
+  <text>{{userInfo.nickName}}</text>
+  <view wx:if="{{userInfo.gender === 1}}">男</view>
+  <view wx:else>女</view>
+  <image src="{{userInfo.avatarUrl}}"></image>
+</view>

@@ -1,0 +1,46 @@
+.banner image{
+  width: 750rpx;
+  height: 300rpx;
+}
+.cates{
+  display: flex;
+  flex-wrap: wrap;
+}
+.cate{
+  width: 250rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.cate image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.recommend-top{
+  line-height: 40px;
+  color: #333;
+  font-size: 16px;
+  background: #fafafa;
+  padding-left: 10px;
+}
+.recommend-main{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item{
+  width: 350rpx;
+  text-align: center;
+}
+.item image{
+  width: 350rpx;
+  height: 350rpx;
+}
+.bottom{
+  font-family: "楷体";
+  margin: 20rpx 0;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}

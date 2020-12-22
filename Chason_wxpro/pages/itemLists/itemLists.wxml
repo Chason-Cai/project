@@ -1,0 +1,30 @@
+<view class="wrap">
+  <!-- 二级分类 -->
+  <scroll-view
+  scroll-x="{{true}}"
+  class="subcates">
+    <view class="cate-wrap">
+      <view
+      bindtap="changeCate"
+      data-index="{{index}}"
+      class="subcate {{num === index?'active':''}}"
+      wx:for="{{subCates}}"
+      wx:key="ID"
+      wx:for-item="cate">
+        {{ cate.MALL_SUB_NAME }}
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 商品 -->
+  <view class="recommend-main">
+    <view
+    bindtap="enterDetail"
+    data-id="{{item.ID}}"
+    wx:for="{{items}}"
+    wx:key="ID"
+    class="item">
+      <image mode="aspectFit" src="{{item.IMAGE1}}"></image>
+      <text>{{item.NAME}}</text>
+    </view>
+  </view>
+</view>

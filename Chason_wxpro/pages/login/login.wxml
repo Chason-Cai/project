@@ -1,0 +1,1 @@
+<button open-type="getUserInfo" bindgetuserinfo="login">点击授权登录</button>

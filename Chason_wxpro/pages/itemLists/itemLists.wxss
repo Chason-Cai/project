@@ -1,0 +1,27 @@
+.cate-wrap{
+  display: flex;
+}
+.subcate{
+  flex-shrink: 0;
+  line-height: 40px;
+  font-size: 14px;
+  padding: 0 5px;
+  background: #abcdef;
+}
+.subcate.active{
+  background: rgb(240, 133, 240);
+  color: #f00;
+}
+.recommend-main{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item{
+  width: 350rpx;
+  text-align: center;
+}
+.item image{
+  width: 350rpx;
+  height: 350rpx;
+}
