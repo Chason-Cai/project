@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/lib/layui/css/layui.css">
+</head>
+
+<body>
+
+  <div style="margin: 10px;">
+    <span class="layui-breadcrumb">
+      <a href="/dashboard">首页</a>
+      <a><cite>分类列表</cite></a>
+    </span>
+    <div class="btn" style="margin-top:20px">
+      <a class="layui-btn  layui-btn-warm" href="/cateAdd">增加</a>
+    </div>
+
+    <table class="layui-table layui-form">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>分类名称</th>
+          <th>分类描述</th>
+          <th>分类图标</th>
+          <th>分类状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0;i<cates.length;i++){ %>
+        <tr>
+          <td><%= cates[i].cateName %></td>
+          <td><%= cates[i].cateDesc?cates[i].cateDesc:'暂无描述' %></td>
+          <td>
+            <img
+              src="<%= cates[i].cateIcon?cates[i].cateIcon:'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3865588184,3342697262&fm=26&gp=0.jpg' %>"
+              alt="">
+          </td>
+          <td>
+            <input type="checkbox" <%= cates[i].cateState === '1'? 'checked':'' %> disabled name="switch" lay-skin="switch">
+          </td>
+          <td>
+            <a href="/cateEdit?cateId=<%= cates[i]._id %>" class="layui-btn layui-btn-primay layui-btn-xs">编辑</a>
+            <button
+              data-id="<%= cates[i]._id %>"  
+              class="layui-btn del layui-btn-danger layui-btn-xs"
+            >删除</button>
+          </td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+    <div id="page"></div>
+  </div>
+
+  <script src="/lib/layui/layui.js"></script>
+  <script>
+    layui.use(['element', 'jquery', 'form', 'laypage', 'layer'], function () {
+      var element = layui.element;
+      var $ = layui.jquery;
+      var form = layui.form;
+      var laypage = layui.laypage;
+      var layer = layui.layer;
+      //执行一个laypage实例
+      laypage.render({
+        elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+        , count: <%= count %> //数据总数，从服务端得到
+        , limit: 2
+        , curr: <%= current %>
+        , jump: function (obj, first) {
+          //obj包含了当前分页的所有参数，比如：
+          console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+          console.log(obj.limit); //得到每页显示的条数
+          
+          //首次不执行
+          if (!first) {
+            //do something
+            window.location.href=`/cateList?current=${obj.curr}&pageSize=${obj.limit}`
+          }
+        }
+      });
+
+      // 点击删除按钮
+      $(".del").click(function(){
+      
+        var id = this.dataset.id;
+        var index = -1;
+        index = layer.open({
+          type:1,
+          title:"删除分类?",
+          content:"您确认删除吗？",
+          skin:"layui-layer-molv",
+          btn:['确认','取消'],
+          yes:function(){
+            // 删除
+            $.ajax({
+              url:'/delCate',
+              type:"POST",
+              dataType:"json",
+              data:{
+                cateId: id
+              },
+              success:function(res){
+                if(res.code == 0){
+                  layer.msg(res.msg,{icon:1},function(){
+                    history.go(0)
+                  })
+                }else{
+                  layer.msg(res.msg,{icon:2},function(){
+                    // 关闭弹出层
+                    layer.close(index)
+                  })
+                }
+              }
+            })
+          },
+          btn2:function(){
+            layer.msg("取消删除了")
+          }
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>

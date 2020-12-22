@@ -1,0 +1,15 @@
+<%- include('head') -%>
+  <h1>我是home页</h1>
+  <%= sign?sign:'这家伙很懒是什么都没有留下' %>
+
+  <% for(var i=0;i<arr.length;i++) {%>
+    <div>
+      <h3> <%= arr[i].name %> </h3>
+      <p> <%= arr[i].feature %> </p>
+    </div>
+  <% } %>
+
+  <%= richText %>
+  <%- richText  %>
+</body>
+</html>

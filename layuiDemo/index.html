@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/layui/css/layui.css">
+</head>
+<body>
+  <button class="layui-btn">按钮</button>
+  <div id="rate"></div>
+  <script src="./lib/layui/layui.js"></script>
+  <script>
+     layui.use(['jquery','rate'],function(){
+       var $ = layui.jquery;
+       var rate = layui.rate;
+
+      /*  $(function(){
+         alert(1)
+       }) */
+       rate.render({
+        elem: '#rate'
+       })
+
+     })
+  </script>
+</body>
+</html>

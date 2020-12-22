@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" id="file" name="img">
+    <img src="" id="img" alt="">
+    <input type="submit">
+  </form>
+  <script>
+    var file = document.querySelector('#file');
+    var oImg = document.querySelector('#img')
+    file.onchange = function(){
+      console.log(this.files[0])
+      var reader = new FileReader();
+      reader.readAsDataURL(this.files[0]);
+      
+      reader.onload  = function(){
+        // 监听 reader 读取文件的进度，当读取完毕时触发
+        console.log(this.result)
+        oImg.src = this.result
+      }
+    }
+  </script>
+</body>
+</html>

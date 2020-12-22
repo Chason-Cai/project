@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <h1>home页</h1>
+  <% for(var i=0;i<stus.length;i++){ %>
+    <div>
+      姓名<h4><%= stus[i].name %></h4>
+      年级<p> <%= stus[i].age %> </p>
+      性别<p> <%= stus[i].gender?'男':'女' %> </p>
+    </div>
+  <% } %>
+</body>
+</html>
